@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: _1001_test_library
+    description: "Library of sessions and experiments seen"
+    columns:
+      - name: user_pseudo_id
+        description: "One of the primary keys for this table"
+        tests:
+          - not_null
+
+      - name: session_id
+        description: "One of the primary keys for this table"
+        tests:
+          - not_null
