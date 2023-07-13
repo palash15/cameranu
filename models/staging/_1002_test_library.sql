@@ -1,7 +1,6 @@
 with _0001 as (select * from {{ ref("_0001_bigquery_primera") }})
 
 select distinct
-    event_date,
     user_pseudo_id,
     session_id,
     vwo_uuid,
