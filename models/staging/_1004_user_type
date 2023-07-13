@@ -1,0 +1,8 @@
+with _0001 as (select * from {{ref('_0001_bigquery_primera')}})
+
+select distinct
+    user_pseudo_id,
+    event_date,
+    session_id,
+    session_count
+from _0001
