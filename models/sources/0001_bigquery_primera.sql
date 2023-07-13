@@ -1,1 +1,1 @@
-select * from `big-query-project-primera.analytics_317459819.events_20230709`
+select * from `analytics_317459819.clean_events`
