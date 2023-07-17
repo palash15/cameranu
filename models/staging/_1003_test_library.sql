@@ -1,4 +1,4 @@
-with _0001 as (select * from {{ ref("_0001_bigquery_primera") }})
+with _0001 as (select * from {{ ref("_1001_events_transform") }})
 
 select distinct
     user_pseudo_id,

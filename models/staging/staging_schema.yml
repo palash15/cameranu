@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: _1001_test_library
+  - name: _1003_test_library
     description: "Library of sessions and experiments seen"
     columns:
       - name: user_pseudo_id

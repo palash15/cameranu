@@ -1,1 +1,1 @@
-select * from `analytics_317459819.clean_events`
+select * from `analytics_317459819.events_*`

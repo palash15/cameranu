@@ -2,7 +2,7 @@ with traffic_source_medium as (
     select distinct
         traffic_source,
         traffic_medium,
-        from {{ref('_0001_bigquery_primera')}}
+        from {{ref('_1001_events_transform')}}
 ),
 
 final AS (
