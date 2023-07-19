@@ -1,8 +1,0 @@
-with _0001 as (select * from {{ref('_1001_events_transform')}})
-
-select distinct
-    user_pseudo_id,
-    event_date,
-    session_id,
-    session_count
-from _0001
