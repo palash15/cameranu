@@ -8,8 +8,8 @@ select distinct
     vwo_campaign_name as experiment_name,
     vwo_variant_id as variant_id,
     vwo_variant_name as variant_name,
-    case when vwo_variant_name is not null then 'Variant' 
-         when lower(vwo_variant_name) like '%control%' then 'Control'
+    case when lower(vwo_variant_name) like '%control%' then 'Control'
+         when vwo_variant_name is not null then 'Variant' 
     end as variant_type
          
 from _0001
