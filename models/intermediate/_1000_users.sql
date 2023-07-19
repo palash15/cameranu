@@ -24,6 +24,7 @@ select
     t2.experiment_name,
     t2.variant_id,
     t2.variant_name,
+    t2.variant_type,
 
     t3.addtocart_triggered,
     t3.purchase_triggered,
