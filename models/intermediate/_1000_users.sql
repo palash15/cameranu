@@ -26,13 +26,7 @@ select
     t2.variant_name,
     t2.variant_type,
 
-    t3.addtocart_triggered,
-    t3.purchase_triggered,
-    t3.viewitem_triggered,
-    t3.viewcart_triggered,
-    t3.checkout_triggered,
-    t3.pdp_seen,
-    t3.collection_page_seen,
+    t3.*,
 
     t4.user_type,
 
