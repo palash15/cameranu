@@ -69,8 +69,6 @@ select
     t3.cro_event_18_triggered,
     t3.cro_event_19_triggered,
     t3.cro_event_20_triggered,
-    t3.PDP_seen,
-    t3.collection_page_seen,
 
     t4.user_type,
 
