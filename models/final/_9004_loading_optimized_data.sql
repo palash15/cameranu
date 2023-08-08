@@ -31,4 +31,8 @@ groupby as (
   from big-query-project-primera.dbt_production._9001_device_data
   group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
 
-  select * from groupby
+SELECT distinct event_date, event_name, experiment_name, variant_name, users, transaction_id, revenue, device, browser, user_type
+from groupby
+WHERE EVENT_CATEGORY != 'other events' AND EXPERIMENT_NAME IS NOT NULL
+  
+  
