@@ -9,6 +9,7 @@ select
     experiment_name as experiments, 
     variant_name as variants,
     device,
+    browser,
     event_name,
     count(distinct transaction_id) as purchases,
     sum(revenue) as revenue,
@@ -18,4 +19,4 @@ select
     count(case when user_type='returning_user' then 1 else 0 end) as returning_user
 
 from _1000
-group by experiment_name, variant_name, device, event_name
+group by experiment_name, variant_name, device, browser, event_name
