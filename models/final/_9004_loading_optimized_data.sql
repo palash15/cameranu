@@ -8,6 +8,7 @@ groupby as (
   select 
     event_date, 
     event_name,
+    event_category,
     transaction_id,
     device,
     browser,
@@ -28,6 +29,6 @@ groupby as (
     count(distinct user_pseudo_id) as users, 
     count(distinct session_id) as sessions,
   from big-query-project-primera.dbt_production._9001_device_data
-  group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19)
+  group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
 
   select * from groupby
