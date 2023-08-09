@@ -14,10 +14,9 @@ metrics as (
         experiment_name as experiments, 
         variant_name as variants,
         device,
-        browser,
         event_name
     from _1000
-    group by experiment_name, variant_name, device, browser, event_name
+    group by experiment_name, variant_name, device, event_name
 )
 
 select
