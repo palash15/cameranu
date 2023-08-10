@@ -18,7 +18,7 @@ groupby as (
     user_type,
     channel_grouping_session,
     count(distinct user_pseudo_id) as users
-  from big-query-project-primera.dbt_production._9001_device_data
+  from _1000
   group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
 SELECT * from groupby
