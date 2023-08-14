@@ -18,7 +18,7 @@ groupby as (
     user_type,
     channel_grouping_session,
     count(distinct user_pseudo_id) as users,
-    array_agg(distinct user_pseudo_id order by user_pseudo_id) as user_pseudo_ids
+    string_agg(distinct user_pseudo_id) as user_pseudo_ids
   from _1000
   group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
