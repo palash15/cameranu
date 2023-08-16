@@ -22,8 +22,6 @@ groupby as (
   from _1000
   group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
- SELECT * 
-  FROM groupby
-  WHERE transaction_id is not null and variant_name = 'Variation-1' and event_date = '2023-08-06'
+ SELECT * FROM groupby
   
   
