@@ -3,7 +3,7 @@ with events as (select * from {{ref("_0001_bigquery_primera")}}),
 clean_events as (
   SELECT 
     PARSE_DATE("%Y%m%d", event_date) as event_date,
-    user_pseudo_id,
+    CAST(user_pseudo_id as STRING) as user_pseudo_id,
     (select value.int_value from unnest(event_params) where key = "ga_session_id") as session_id,
     geo.country as country,  
     event_name,
