@@ -1,6 +1,6 @@
 with _1000 as (
     select * from {{ref('_1000_users')}}
-    where experiment_name is not null and event_category != 'other events'
+    WHERE EVENT_CATEGORY != 'other events' AND EXPERIMENT_NAME IS NOT NULL
 )
 
 select
