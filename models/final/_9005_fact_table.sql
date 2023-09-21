@@ -9,6 +9,7 @@ select
     max(event_date) as max_date,
     string_agg(distinct variant_name, ',') as variants,
     string_agg(distinct device, ',') as devices,
-    string_agg(distinct event_name, ',') as event_names
+    string_agg(distinct event_name, ',') as event_names,
+    'primera@valantic.nl' as user_key
 from _1000
 group by experiment_name
