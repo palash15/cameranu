@@ -1,4 +1,4 @@
-with _1000 as (select * from {{ref('_1000_users')}})
+with _1000 as (select * from {{ref('_2000_users')}})
 
 select
     user_pseudo_id,
@@ -12,10 +12,9 @@ select
     traffic_source,
     traffic_medium,
     revenue,
-    vwo_uuid,
     experiment_id,
     experiment_name,
     variant_id,
-    variant_name,    
+    variant_name,
     channel_grouping_session    
 from _1000

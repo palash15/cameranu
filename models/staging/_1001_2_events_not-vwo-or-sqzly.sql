@@ -1,17 +1,12 @@
-with events as (select * from {{ref("_0001_bigquery_primera")}}),
+with events as (select * from {{ref("_0001_bigquery_paardekooper")}}),
 
 clean_events as (
   SELECT 
     PARSE_DATE("%Y%m%d", event_date) as event_date,
-    CAST(user_pseudo_id as STRING) as user_pseudo_id,
+    user_pseudo_id,
     (select value.int_value from unnest(event_params) where key = "ga_session_id") as session_id,
     geo.country as country,  
     event_name,
-    (select value.string_value from unnest(event_params) where key = "vwo_uuid") as vwo_uuid,
-    (select value.string_value from unnest(event_params) where key = "vwo_variation_id") as vwo_variant_id,
-    (select value.string_value from unnest(event_params) where key = "vwo_variation_name") as vwo_variant_name,
-    (select value.string_value from unnest(event_params) where key = "vwo_campaign_id") as vwo_campaign_id,
-    (select value.string_value from unnest(event_params) where key = "vwo_campaign_name") as vwo_campaign_name,
     (select value.string_value from unnest(event_params) where key = "transaction_id") as transaction_id,
     (select value.string_value from unnest(event_params) where key = "page_location") as page_location,
     traffic_source.source as traffic_source,
