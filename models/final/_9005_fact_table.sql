@@ -1,5 +1,5 @@
 with _1000 as (
-    select * from {{ref('_1000_users')}}
+    select * from {{ref('_2000_users')}}
     WHERE EVENT_CATEGORY != 'other events' AND EXPERIMENT_NAME IS NOT NULL
 )
 
@@ -10,6 +10,7 @@ select
     string_agg(distinct variant_name, ',') as variants,
     string_agg(distinct device, ',') as devices,
     string_agg(distinct event_name, ',') as event_names,
+    'Primera' as user_role,
     'Primera' as project
 from _1000
 group by experiment_name

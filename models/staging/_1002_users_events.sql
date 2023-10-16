@@ -1,4 +1,4 @@
-with _0001 as (select * from {{ ref("_1001_events_transform") }} where lower(event_name)!='vwo')
+with _0001 as (select * from {{ ref("_1001_3_events_join") }} where lower(event_name)!='vwo')
 
 select
     user_pseudo_id,
