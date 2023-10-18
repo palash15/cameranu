@@ -1,4 +1,1 @@
-
-target/
-dbt_packages/
-logs/
+CRO_dashboard_primera/models/staging/_1007_test_library_squeezely
