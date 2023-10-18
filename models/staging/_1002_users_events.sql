@@ -13,7 +13,7 @@ _userinfo AS (
                                     'inwisselen_beslis_ik_later', 'inwisselen_per_post', 'filter_use', 
                                     'top_navigation_use', 'mobile_navigation_use', 'sort_use') 
             THEN 'client specific events'
-            WHEN lower(event_name) LIKE '%cro%'
+            WHEN lower(event_name) starts_with 'cro%'
             THEN 'CRO events'
             WHEN lower(event_name) IN ('add_payment_info', 'add_shipping_info', 'add_to_cart', 'add_to_wishlist', 'begin_checkout', 
                                     'purchase', 'refund', 'remove_from_cart', 'select_item', 'select_promotion', 'view_cart', 
