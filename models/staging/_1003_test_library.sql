@@ -9,12 +9,12 @@ _vwo AS (
     CAST(variant_id AS STRING) AS variant_id,
     CAST(variant_name AS STRING) AS variant_name,
     CASE 
-      WHEN LOWER(variant_name) LIKE '1' THEN 'Control'
-      WHEN variant_name != '1' THEN 'Variant'
+      WHEN LOWER(variant_name) LIKE 'control' THEN 'Control'
+      WHEN variant_name != 'control' THEN 'Variant'
     END AS variant_type
   FROM _0001
   WHERE 
-    LOWER(event_name) LIKE '%experience_impression%' 
+    LOWER(event_name) LIKE '%vwo%' 
     AND experiment_id IS NOT NULL 
     AND variant_name IS NOT NULL
   ORDER BY user_pseudo_id
