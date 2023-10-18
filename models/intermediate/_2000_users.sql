@@ -1,19 +1,10 @@
-{{ config(
-    materialized='table',
-    partition_by={
-       "field": "event_date",
-       "data_type": "date"
-    },
-    cluster_by=["event_name", "event_category", "device", "browser"]
-) }}
-
 WITH
     _1002 AS (SELECT * FROM {{ ref("_1002_users_events") }}),
     _1003 AS (SELECT * FROM {{ ref("_1008_combined_library") }}),
     _1005 AS (SELECT * FROM {{ ref("_1005_user_type") }}),
     _1006 AS (SELECT * FROM {{ ref("_1006_dict_source_medium_conversion") }}),
-
-    _2000 AS (
+    
+    _2000_pre_ranked AS (
         SELECT
             t1.user_pseudo_id,
             t1.session_id,
@@ -27,7 +18,7 @@ WITH
             t1.traffic_source,
             t1.traffic_medium,
             t1.revenue,
-
+            
             t2.experiment_id,
             t2.experiment_name,
             t2.variant_id,
@@ -36,17 +27,49 @@ WITH
 
             t4.user_type,
 
-            t5.channel_grouping_session
+            t5.channel_grouping_session,
+            ROW_NUMBER() OVER (PARTITION BY t1.transaction_id ORDER BY CASE WHEN t1.event_name = 'purchase' THEN 1 ELSE 2 END) as row_rank
         FROM _1002 t1
             LEFT JOIN _1003 t2 ON 
-        CAST(t1.user_pseudo_id AS STRING) = CAST(t2.user_pseudo_id AS STRING) 
-        AND CAST(t1.session_id AS STRING) = CAST(t2.session_id AS STRING)
-    LEFT JOIN _1005 t4 ON 
-        CAST(t1.user_pseudo_id AS STRING) = CAST(t4.user_pseudo_id AS STRING) 
-        AND CAST(t1.session_id AS STRING) = CAST(t4.session_id AS STRING)
-    LEFT JOIN _1006 t5 ON 
-        CAST(t1.traffic_source AS STRING) = CAST(t5.traffic_source AS STRING) 
-        AND CAST(t1.traffic_medium AS STRING) = CAST(t5.traffic_medium AS STRING)
-)
+                CAST(t1.user_pseudo_id AS STRING) = CAST(t2.user_pseudo_id AS STRING) 
+                AND CAST(t1.session_id AS STRING) = CAST(t2.session_id AS STRING)
+            LEFT JOIN _1005 t4 ON 
+                CAST(t1.user_pseudo_id AS STRING) = CAST(t4.user_pseudo_id AS STRING) 
+                AND CAST(t1.session_id AS STRING) = CAST(t4.session_id AS STRING)
+            LEFT JOIN _1006 t5 ON 
+                CAST(t1.traffic_source AS STRING) = CAST(t5.traffic_source AS STRING) 
+                AND CAST(t1.traffic_medium AS STRING) = CAST(t5.traffic_medium AS STRING)
+    ),
+    
+    _2000 AS (
+        SELECT 
+            *,
+            CASE WHEN row_rank = 1 THEN revenue ELSE 0 END AS adjusted_revenue
+        FROM _2000_pre_ranked
+    ),
+    
+    _final AS (
+        SELECT
+            user_pseudo_id,
+            session_id,
+            event_date,
+            event_name,
+            event_category,
+            transaction_id,
+            device,
+            os,
+            browser,
+            traffic_source,
+            traffic_medium,
+            adjusted_revenue AS revenue,
+            experiment_id,
+            experiment_name,
+            variant_id,
+            variant_name,
+            variant_type,
+            user_type,
+            channel_grouping_session
+        FROM _2000
+    )
 
-SELECT * FROM _2000
+SELECT * FROM _final
