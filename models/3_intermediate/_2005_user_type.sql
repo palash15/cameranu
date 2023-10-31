@@ -1,4 +1,4 @@
-with _0001 as (select * from {{ref('_1001_3_events_join')}})
+with _0001 as (select * from {{ref('_2001_3_events_join')}})
 
 select distinct
     user_pseudo_id,

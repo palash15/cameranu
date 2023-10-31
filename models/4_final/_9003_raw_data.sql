@@ -1,4 +1,4 @@
-with _1000 as (select * from {{ref('_2000_users')}})
+with _1000 as (select * from {{ref('_3000_users')}})
 
 select
     user_pseudo_id,

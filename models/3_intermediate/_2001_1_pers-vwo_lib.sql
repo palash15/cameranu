@@ -1,4 +1,4 @@
-with events as (select * from {{ref("_0001_bigquery_primera")}}),
+with events as (select * from {{ref("_1001_bigquery_primera")}}),
 
 clean_events as (
   SELECT DISTINCT

@@ -1,6 +1,6 @@
 WITH _vwo AS (
     SELECT * 
-    FROM {{ ref('_1003_test_library') }}
+    FROM {{ ref('_2003_test_library') }}
 ),
 
 _union AS (
