@@ -2,8 +2,8 @@
 
 
 WITH
-    _1002 AS (SELECT * FROM {{ ref("_1001_1_pers-vwo_lib") }}),
-    _1003 AS (SELECT * FROM {{ ref("_1001_2_events_not-vwo-or-sqzly") }}),
+    _1002 AS (SELECT * FROM {{ ref("_2001_1_pers-vwo_lib") }}),
+    _1003 AS (SELECT * FROM {{ ref("_2001_2_events_not-vwo-or-sqzly") }}),
 
 _join AS (
     SELECT

@@ -34,11 +34,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   primera:
     # Applies to all files under models/sources/
-    sources:
+    1_sources:
       materialized: view
-    staging:
+    2_staging:
       materialized: view
-    intermediate:
+    3_intermediate:
       materialized: view                  
-    final:
+    4_final:
       +materialized: table

@@ -1,8 +1,8 @@
 WITH
-    _1002 AS (SELECT * FROM {{ ref("_1002_users_events") }}),
-    _1003 AS (SELECT * FROM {{ ref("_1008_combined_library") }}),
-    _1005 AS (SELECT * FROM {{ ref("_1005_user_type") }}),
-    _1006 AS (SELECT * FROM {{ ref("_1006_dict_source_medium_conversion") }}),
+    _1002 AS (SELECT * FROM {{ ref("_2002_users_events") }}),
+    _1003 AS (SELECT * FROM {{ ref("_2008_combined_library") }}),
+    _1005 AS (SELECT * FROM {{ ref("_2005_user_type") }}),
+    _1006 AS (SELECT * FROM {{ ref("_2006_dict_source_medium_conversion") }}),
     
     _2000_pre_ranked AS (
         SELECT
