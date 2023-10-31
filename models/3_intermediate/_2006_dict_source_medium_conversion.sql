@@ -2,7 +2,7 @@ WITH traffic_source_medium AS (
     SELECT DISTINCT
         traffic_source,
         traffic_medium,
-    FROM {{ref('_2001_3_events_join')}}
+    FROM {{ref('_2001_6_events_join')}}
 ),
 
 final AS (
