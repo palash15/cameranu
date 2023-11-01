@@ -1,16 +1,17 @@
 with events as (select * from {{ref("_1001_bigquery_primera")}}),
 
-clean_events as (
+clean_events AS (
   SELECT DISTINCT
     PARSE_DATE("%Y%m%d", event_date) as event_date_1,
     user_pseudo_id AS user_pseudo_id_1,
     CONCAT(user_pseudo_id, (SELECT value.int_value FROM UNNEST(event_params) WHERE key = 'ga_session_id')) AS session_id_1,
     event_name,
-    (select value.int_value from unnest(event_params) where key = "personalization_id") as personalization_id,
-    (select value.string_value from unnest(event_params) where key = "personalization_name") as personalization_name,
-    (select value.int_value from unnest(event_params) where key = "personalization_variant_id") as personalization_variant_id,
-    (select value.string_value from unnest(event_params) where key = "variant_name") as personalization_variant_name,
-  FROM events
+    CONCAT('sqzly_', CAST((SELECT value.int_value FROM UNNEST(event_params) WHERE key = "personalization_id") AS STRING)) as personalization_id,
+    CONCAT('sqzly_', (SELECT value.string_value FROM UNNEST(event_params) WHERE key = "personalization_name")) as personalization_name,
+    CONCAT('sqzly_', CAST((SELECT value.int_value FROM UNNEST(event_params) WHERE key = "personalization_variant_id") AS STRING)) as personalization_variant_id,
+    CONCAT('sqzly_', (SELECT value.string_value FROM UNNEST(event_params) WHERE key = "variant_name")) as personalization_variant_name
+  FROM
+    events
 ),
 
 selection AS (
