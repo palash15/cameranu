@@ -73,7 +73,7 @@ select
     browser,
     traffic_source,
     traffic_medium,
-    revenue,
+    adjusted_revenue AS revenue,
     experiment_id,
     experiment_name,
     variant_id,
