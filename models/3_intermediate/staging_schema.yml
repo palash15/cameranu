@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: _1008_combined_library
+  - name: _2008_combined_library
     description: "Library of sessions and experiments seen"
     columns:
       - name: user_pseudo_id
