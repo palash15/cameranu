@@ -74,7 +74,6 @@ select
     traffic_source,
     traffic_medium,
     revenue,
-    vwo_uuid,
     experiment_id,
     experiment_name,
     variant_id,
