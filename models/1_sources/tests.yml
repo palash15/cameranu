@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: _0001_bigquery_primera
+  - name: _0001_bigquery_cameranu
     description: "Raw source data"
     columns:
       - name: event_name
