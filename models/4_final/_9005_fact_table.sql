@@ -10,7 +10,7 @@ select
     string_agg(distinct variant_name, ',') as variants,
     string_agg(distinct device, ',') as devices,
     string_agg(distinct event_name, ',') as event_names,
-    'Primera' as user_role,
-    'Primera' as project
+    'Cameranu' as user_role,
+    'Cameranu' as project
 from _1000
 group by experiment_name
