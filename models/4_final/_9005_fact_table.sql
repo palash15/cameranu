@@ -1,4 +1,3 @@
-{{config(materialized='table')}}
 with _1000 as (
     select * from {{ref('_3000_users')}}
     WHERE EVENT_CATEGORY != 'other events' AND EXPERIMENT_NAME IS NOT NULL

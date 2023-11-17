@@ -81,4 +81,4 @@ select
     variant_type,
     user_type,
     channel_grouping_session
-from _1000_join where event_category != 'other_events'
+from _1000_join where event_category != 'other_events' and experiment_name is not null
