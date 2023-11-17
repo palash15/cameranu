@@ -1,3 +1,4 @@
+{{config(materialized='table')}}
 with _9006 as (
 SELECT distinct 
 event_date, 
