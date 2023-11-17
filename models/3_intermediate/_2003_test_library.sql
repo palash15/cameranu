@@ -14,7 +14,7 @@ _vwo AS (
     END AS variant_type
   FROM _0001
   WHERE 
-    LOWER(event_name) LIKE '%experience_impression%' 
+    LOWER(event_name) in ('ab-test','ab_test') 
     AND experiment_id IS NOT NULL 
     AND variant_name IS NOT NULL
   ORDER BY user_pseudo_id
