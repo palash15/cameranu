@@ -33,4 +33,4 @@ _userinfo AS (
     FROM _0001
 )
 
-SELECT * FROM _userinfo
+SELECT * FROM _userinfo where event_category != 'other_events'
