@@ -23,10 +23,6 @@ split_experiment AS (
         CAST(event_date_2 AS STRING) as event_date,
         CAST(user_pseudo_id_2 AS STRING) as user_pseudo_id,
         CAST(session_id_2 AS STRING) as session_id,
-        CAST(NULL AS STRING) as personalization_id,
-        CAST(NULL AS STRING) as personalization_name,
-        CAST(NULL AS STRING) as personalization_variant_id,
-        CAST(NULL AS STRING) as personalization_variant_name,
         -- Extracting experiment name and ID
         case when contains_substr(lower(experiment_information), '- a') then split(lower(experiment_information), '- a')[SAFE_OFFSET(0)]
              when contains_substr(lower(experiment_information), '- b') then split(lower(experiment_information), '- b')[SAFE_OFFSET(0)]

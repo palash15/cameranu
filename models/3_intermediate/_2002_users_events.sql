@@ -1,5 +1,5 @@
 WITH _0001 AS (
-    SELECT * FROM {{ ref("_2001_6_events_join") }} WHERE lower(event_name) != 'vwo'
+    SELECT * FROM {{ ref("_2001_6_events_join") }} WHERE lower(event_name) not in ('ab-test', 'ab_test')
 ),
 
 _userinfo AS (
