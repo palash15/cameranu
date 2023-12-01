@@ -22,7 +22,8 @@ _userinfo AS (
                                     'view_item', 'view_item_list', 'view_promotion') 
             THEN 'standard events'
             ELSE 'other events'
-        END AS event_category,                            
+        END AS event_category,
+        country,                            
         transaction_id,
         device,
         os_version AS os,

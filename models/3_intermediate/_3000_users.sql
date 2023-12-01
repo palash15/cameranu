@@ -18,6 +18,7 @@ WITH
             t1.traffic_source,
             t1.traffic_medium,
             t1.revenue,
+            t1.country,
            
             t2.experiment_id,
             t2.experiment_name,
@@ -61,24 +62,30 @@ FROM _2000 t1
 left join compact_ids t2 on t1.user_pseudo_id = t2.user_pseudo_id
 )
  
-select
-    short_user_id as user_pseudo_id,
-    session_id,
-    event_date,
-    event_name,
-    event_category,
-    transaction_id,
-    device,
-    os,
-    browser,
-    traffic_source,
-    traffic_medium,
-    adjusted_revenue AS revenue,
-    experiment_id,
-    experiment_name,
-    variant_id,
-    variant_name,
-    variant_type,
-    user_type,
-    channel_grouping_session
-from _1000_join where event_category != 'other_events' and experiment_name is not null
+select * from (
+    select
+        short_user_id as user_pseudo_id,
+        session_id,
+        event_date,
+        event_name,
+        event_category,
+        transaction_id,
+        device,
+        os,
+        browser,
+        traffic_source,
+        traffic_medium,
+        adjusted_revenue AS revenue,
+        experiment_id,
+        experiment_name,
+        variant_id,
+        variant_name,
+        variant_type,
+        user_type,
+        channel_grouping_session,
+        case when channel_grouping_session = 'Direct' and country not in ('Netherlands', 'Belgium', 'Luxembourg') then 'exclude'
+            else 'include'
+        end as bot_traffic
+    from _1000_join where event_category != 'other_events' and experiment_name is not null
+)
+where bot_traffic = 'include'
