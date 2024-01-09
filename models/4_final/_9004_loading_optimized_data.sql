@@ -1,5 +1,5 @@
 with _1000 as (
-    select * from {{ref('_3000_users')}}
+    select * from {{ref('_4000_filter_users')}}
 ),
 
 -- This code was written to optimize the latency will loading data in a dashboard. It loads 15 times less data.
