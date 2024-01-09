@@ -41,4 +41,4 @@ models:
     3_intermediate:
       materialized: view                  
     4_final:
-      materialized: view
+      materialized: table
