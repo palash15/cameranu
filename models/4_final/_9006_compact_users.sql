@@ -1,16 +1,16 @@
 with _9006 as (
-SELECT distinct 
-event_date, 
-experiment_name,
-variant_name, 
-user_type,
-channel_grouping_session, 
-device, 
-browser,
-user_pseudo_id,
-transaction_id,
-revenue
-FROM {{ ref('_9001_device_data') }}
+    SELECT distinct 
+    event_date, 
+    experiment_name,
+    variant_name, 
+    user_type,
+    channel_grouping_session, 
+    device, 
+    browser,
+    user_pseudo_id,
+    transaction_id,
+    revenue
+    FROM {{ ref('_9001_device_data') }}
 )
  
 SELECT distinct event_date, experiment_name,variant_name, user_type,channel_grouping_session, device, browser,
