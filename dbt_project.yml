@@ -3,7 +3,7 @@
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
 name: 'cameranu'
-version: '1.0.0'
+version: '1.6.0'
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
@@ -33,12 +33,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   cameranu:
-    # Applies to all files under models/sources/
-    1_sources:
-      materialized: view
-    2_staging:
-      materialized: view
-    3_intermediate:
-      materialized: view                  
+    # Applies to all files under models/sources/                 
     4_final:
-      materialized: table
+      +materialized: table
