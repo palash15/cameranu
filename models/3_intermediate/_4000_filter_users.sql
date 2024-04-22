@@ -18,4 +18,3 @@ with _3000_filter as (
 
 select *
 from _3000_filter
-where num_days <= 120
