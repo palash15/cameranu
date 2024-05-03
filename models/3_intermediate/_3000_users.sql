@@ -89,4 +89,4 @@ select * from (
         end as bot_traffic
     from _1000_join where event_category != 'other_events' and experiment_name is not null
 )
-where bot_traffic = 'include'
+where bot_traffic = 'include' and experiment_name is not null
