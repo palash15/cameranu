@@ -78,7 +78,7 @@ select * from (
         adjusted_revenue AS revenue,
         experiment_id,
         experiment_name,
-        cast(REGEXP_REPLACE(experiment_name,'[^0-9 ]','0') as numeric) as experiment_num,
+        cast(ifnull(REGEXP_REPLACE(experiment_name,'[^0-9 ]',''), '0') as numeric) as experiment_num,
         variant_id,
         variant_name,
         variant_type,
