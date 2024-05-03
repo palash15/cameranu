@@ -14,4 +14,4 @@ select
     'Cameranu' as user_role,
     'Cameranu' as project
 from _1000
-group by experiment_name
+group by experiment_name, experiment_num
