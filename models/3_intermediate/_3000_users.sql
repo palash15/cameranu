@@ -78,6 +78,7 @@ select * from (
         adjusted_revenue AS revenue,
         experiment_id,
         experiment_name,
+        REGEXP_REPLACE(experiment_name,'[^0-9 ]','') as experiment_num,
         variant_id,
         variant_name,
         variant_type,

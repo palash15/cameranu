@@ -5,6 +5,7 @@ with _1000 as (
 
 select
     experiment_name as experiments, 
+    experiment_num,
     min(event_date) as min_date, 
     max(event_date) as max_date,
     string_agg(distinct variant_name, ',') as variants,
