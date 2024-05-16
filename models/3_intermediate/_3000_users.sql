@@ -46,6 +46,7 @@ WITH
         SELECT
             *,
             CASE WHEN row_rank = 1 THEN revenue ELSE 0 END AS adjusted_revenue
+            CASE WHEN row_rank = 1 THEN transaction_id ELSE '0' END AS adjusted_transaction_id
         FROM _2000_pre_ranked
     ),
  
@@ -69,7 +70,7 @@ select * from (
         event_date,
         event_name,
         event_category,
-        transaction_id,
+        adjusted_transaction_id as transaction_id,
         device,
         os,
         browser,
