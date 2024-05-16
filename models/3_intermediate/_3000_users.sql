@@ -45,7 +45,7 @@ WITH
     _2000 AS (
         SELECT
             *,
-            CASE WHEN row_rank = 1 THEN revenue ELSE 0 END AS adjusted_revenue
+            CASE WHEN row_rank = 1 THEN revenue ELSE 0 END AS adjusted_revenue,
             CASE WHEN row_rank = 1 THEN transaction_id ELSE '0' END AS adjusted_transaction_id
         FROM _2000_pre_ranked
     ),
