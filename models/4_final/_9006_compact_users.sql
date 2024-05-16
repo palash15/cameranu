@@ -10,7 +10,7 @@ with _9006 as (
     user_pseudo_id,
     COALESCE(transaction_id, '0') AS transaction_id,
     COALESCE(CAST(revenue AS STRING), '0') AS revenue,
-    FROM {{ ref('_9001_device_data') }}
+    FROM {{ ref('_4000_filter_users') }}
 )
  
 SELECT distinct event_date, experiment_name,variant_name, user_type,channel_grouping_session, device, browser,
